@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import BillModal from './BillModal.js';
 
 const AddButton = () =>{
-	 const [modalShow, setModalShow] = React.useState(false);
+	const [modalShow, setModalShow] = React.useState(false);
 
 	const button = <FontAwesomeIcon icon={faPlus} size="6x"/>;
 	return(

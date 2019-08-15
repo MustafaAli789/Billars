@@ -1,0 +1,25 @@
+h4, #contained-modal-title-vcenter{
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 700;
+}
+
+h4{
+	font-size: 1rem;
+	margin-top: 1rem;
+}
+
+input{
+	width: 100%;
+	border-radius: 2px;
+    border: none;
+    background-color: #e2e4e6;
+    border-bottom: 2px solid #bcbec2;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 500;
+}
+
+input:focus{
+	outline: none;
+	background-color: #d9d9ff;
+	border-bottom: 2px solid #0459db;
+}
