@@ -1,12 +1,18 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import BillModal from './BillModal.js';
 
 const AddButton = () =>{
+	 const [modalShow, setModalShow] = React.useState(false);
+
 	const button = <FontAwesomeIcon icon={faPlus} size="6x"/>;
 	return(
-		<Button variant="outline-dark">{button}</Button>
+		<div>
+			<Button variant="outline-dark" onClick={() => setModalShow(true)}>{button}</Button>
+			<BillModal show={modalShow} onHide={() => setModalShow(false)} />
+		</div>
 	);
 }
 
