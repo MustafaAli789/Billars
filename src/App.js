@@ -4,6 +4,7 @@ import './App.css';
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AddButton from './AddButton.js';
 
 class App extends Component{
 
@@ -18,7 +19,7 @@ class App extends Component{
     return (
       <div>
         <Row noGutters="true">
-          <Col lg="3">Add Button Here</Col>
+          <Col lg="3"><AddButton></AddButton></Col>
           <Col lg="9">Text And Remaining Here</Col>
         </Row>
         <Row noGutters="true">
