@@ -15,11 +15,15 @@ class App extends Component{
     }
   }
 
+  onSubmitClicked =(color)=>{
+    console.log(color);
+  }
+
   render(){
     return (
       <div>
         <Row noGutters="true">
-          <Col lg="3"><AddButton></AddButton></Col>
+          <Col lg="3"><AddButton submit={this.onSubmitClicked}></AddButton></Col>
           <Col lg="9">Text And Remaining Here</Col>
         </Row>
         <Row noGutters="true">
