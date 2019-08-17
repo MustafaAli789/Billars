@@ -10,15 +10,34 @@ class BillModal extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
-			color: '#fff',
+			title: props.data[0],
+			paymentName: props.data[1],
+			paymentDesc: props.data[2],
+			cost: props.data[3],
+			color: props.data[4],
 		}
 	}
+
 
 	setColor = (newColor)=>{
 		this.setState({color: newColor.hex})
 	}
 
+	handleInputChanged=(event)=>{
+		const inputType = event.target.getAttribute('category');
+		if(inputType==="paymentName"){
+			this.setState({paymentName: event.target.value});
+		} else if(inputType==="paymentDesc"){
+			this.setState({paymentDesc: event.target.value});
+		} else if(inputType==="cost"){
+			this.setState({cost: event.target.value});
+		}
+		
+	}
+
 	render(){
+		const {title, paymentName, paymentDesc, cost, color} = this.state;
+		const {setModalVisible, submit} = this.props;
 		return(
 			<Modal
 		      {...this.props}
@@ -28,26 +47,25 @@ class BillModal extends React.Component{
 		    >
 		      <Modal.Header closeButton>
 		        <Modal.Title id="contained-modal-title-vcenter">
-		          Add a new bill
+		          {title + " bill"}
 		        </Modal.Title>
 		      </Modal.Header>
 		      <Modal.Body>
 		        <h4>Payment name</h4>
-		        <input type="text" placeholder="Rent"></input>
+		        <input type="text" category="paymentName" placeholder="Rent" value={paymentName} onChange={this.handleInputChanged}></input>
 		        <h4>Payment description</h4>
-		        <textarea id="story" rows="3" cols="33" placeholder="Hey, I just met you...">
-				</textarea>
+		        <textarea id="story" category="paymentDesc" rows="3" cols="33" placeholder="Hey, I just met you..." value={paymentDesc} onChange={this.handleInputChanged}></textarea>
 		        <h4>Cost (in $)</h4>
-				<input type="text" placeholder="Color"></input>
+				<input type="text" category="cost" placeholder="Cost" value={cost} onChange={this.handleInputChanged}></input>
 		        <h4>Color</h4>
 		        <SliderPicker
-		        	color={this.state.color}
+		        	color={color}
 		        	onChangeComplete={this.setColor}>
 		        </SliderPicker>
 		      </Modal.Body>
 		      <Modal.Footer>
-		      	<Button variant="outline-dark" onClick={this.props.onHide}>Close</Button>
-		        <Button variant="outline-dark" onClick={()=>this.props.submit(this.state.color)}>Add</Button>
+		      	<Button variant="outline-dark" onClick={()=>setModalVisible(false)}>Close</Button>
+		        <Button variant="outline-dark" onClick={()=>submit(this.state)}>Add</Button>
 		      </Modal.Footer>
 		    </Modal>
 		);
