@@ -10,7 +10,10 @@ const BillCard=({bills})=>{
 	bills.forEach((bill, index)=>{
 		billRows.push(
 			<Row key= {index} style={{marginLeft: '0', marginRight: '0'}}>
-		    	<Col className="bills d-flex align-items-center" sm="3" style={{borderRight: '0'}}><Circle color={bill.color}></Circle>{bill.paymentName}</Col>
+		    	<Col className="bills d-flex align-items-center" sm="3" style={{borderRight: '0'}}>
+		    		<Col sm="2"><Circle color={bill.color}></Circle></Col>
+		    		<Col sm="10">{bill.paymentName}</Col>
+		    	</Col>
 		    	<Col className="bills d-flex align-items-center justify-content-end" sm="2" style={{borderRight: '0'}}>{bill.cost}</Col>
 		    	<Col className="bills d-flex align-items-center" sm="5" style={{borderRight: '0'}}>{bill.paymentDesc}</Col>
 		    	<Col className="bills d-flex align-items-center" sm="2">{index}</Col>
