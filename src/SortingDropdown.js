@@ -4,12 +4,12 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import './SortingButton.css';
 
 
-const SortingDropdown = ()=>{
+const SortingDropdown = ({bills, sortBills})=>{
 	return(
 		<DropdownButton id="dropdown-basic-button" title="Dropdown button">
-  			<Dropdown.Item href="#/action-1">Highest To Lowest Cost</Dropdown.Item>
-  			<Dropdown.Item href="#/action-2">Lowest To Highest Cost</Dropdown.Item>
-  			<Dropdown.Item href="#/action-3">Alphabetical</Dropdown.Item>
+  			<Dropdown.Item onClick={()=>sortBills("HighToLow")}>Highest To Lowest Cost</Dropdown.Item>
+  			<Dropdown.Item onClick={()=>sortBills("LowToHigh")}>Lowest To Highest Cost</Dropdown.Item>
+  			<Dropdown.Item onClick={()=>sortBills("Alpha")}>Alphabetical</Dropdown.Item>
 		</DropdownButton>
 	);
 }

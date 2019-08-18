@@ -120,6 +120,29 @@ class App extends Component{
     }
   }
 
+  //sort the bills
+  sortBills = (sortType)=>{
+    if(sortType==="HighToLow"){
+      let billsSorted = this.state.bills;
+      billsSorted.sort(function(a, b){
+        return b.cost-a.cost;
+      });
+      this.setState({bills: billsSorted});
+    }else if(sortType==="LowToHigh"){
+      let billsSorted = this.state.bills;
+      billsSorted.sort(function(a, b){
+        return a.cost-b.cost;
+      });
+      this.setState({bills: billsSorted});
+    }else if(sortType==="Alpha"){
+      let billsSorted = this.state.bills;
+      billsSorted.sort(function(a, b){
+        return a.paymentName.toLowerCase().localeCompare(b.paymentName.toLowerCase());
+      });
+      this.setState({bills: billsSorted});
+    }
+  }
+
   render(){
     const {bills, renderModal, modalData, containerWidth, colorBarHoverText, income} = this.state;
     const billModal = renderModal ? <BillModal show={true} data={modalData} setModalVisible={this.setModalVisible} submit={this.addEditBill}/> : null;
@@ -133,7 +156,7 @@ class App extends Component{
         <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
         <Row id="sortingRow" style={{marginTop: '0.5rem'}}>
           <Col><h5 id="editButton" onClick={()=>this.changeIncome()}>Edit Income</h5></Col>
-          <Col className="d-flex justify-content-end"><SortingDropdown></SortingDropdown></Col>
+          <Col className="d-flex justify-content-end"><SortingDropdown bills={bills} sortBills={this.sortBills}></SortingDropdown></Col>
         </Row> 
         <Row noGutters="true" id="colorBarContainer">
           <h5 id="colorBarHoverText">{colorBarHoverText}</h5>
