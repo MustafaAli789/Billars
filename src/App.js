@@ -23,9 +23,10 @@ class App extends Component{
   }
 
   componentDidMount() {
-    this.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
+    var self = this;
+    self.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
     window.addEventListener("resize", function(){
-      this.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
+      self.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
     });
   }
 
@@ -93,8 +94,8 @@ class App extends Component{
       <div id="container" className="container" style={{marginTop: '1rem'}}>
         {billModal}
         <Row noGutters="true">
-          <Col sm="2" style={{marginRight: '1rem', display: 'flex', alignItems: 'center'}}><AddButton createNewBill={this.createBillModal}></AddButton></Col>
-          <Col sm="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={1000}></TopMessage></Col>
+          <Col xs="2" style={{marginRight: '1rem', display: 'flex', alignItems: 'center'}}><AddButton createNewBill={this.createBillModal}></AddButton></Col>
+          <Col xs="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={1000}></TopMessage></Col>
         </Row>
         <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
         <h5 id="editButton">Edit Income</h5>

@@ -1,0 +1,8 @@
+#plusIcon{
+	font-size: 7vw;
+}
+@media only screen and (max-width: 900px) {
+  #plusIcon {
+    font-size: 10vw;
+  }
+}
