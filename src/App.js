@@ -19,6 +19,7 @@ class App extends Component{
       modalData: {},
       containerWidth: 0,
       colorBarHoverText: "Placeholder",
+      income: 1000,
     }
   }
 
@@ -87,18 +88,25 @@ class App extends Component{
       document.getElementById("colorBarHoverText").style.color="white";
   }
 
+  changeIncome=()=>{
+    var newIncome = prompt("Enter your income per month:", "1000");
+    if (newIncome != null && !isNaN(newIncome)) {
+      this.setState({income: Number(newIncome)});
+    }
+  }
+
   render(){
-    const {bills, renderModal, modalData, containerWidth, colorBarHoverText} = this.state;
+    const {bills, renderModal, modalData, containerWidth, colorBarHoverText, income} = this.state;
     const billModal = renderModal ? <BillModal show={true} data={modalData} setModalVisible={this.setModalVisible} submit={this.addEditBill}/> : null;
     return (
       <div id="container" className="container" style={{marginTop: '1rem'}}>
         {billModal}
         <Row noGutters="true">
           <Col xs="2" style={{marginRight: '1rem', display: 'flex', alignItems: 'center'}}><AddButton createNewBill={this.createBillModal}></AddButton></Col>
-          <Col xs="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={1000}></TopMessage></Col>
+          <Col xs="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={income}></TopMessage></Col>
         </Row>
         <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
-        <h5 id="editButton">Edit Income</h5>
+        <h5 id="editButton" onClick={()=>this.changeIncome()}>Edit Income</h5>
         <Row noGutters="true" id="colorBarContainer">
           <h5 id="colorBarHoverText">{colorBarHoverText}</h5>
           <ColorBar bills={bills} containerWidth={containerWidth} showBillName={this.showBillName}></ColorBar>
