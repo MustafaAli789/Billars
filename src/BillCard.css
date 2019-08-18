@@ -7,6 +7,7 @@ h4{
 	font-family: 'Titillium Web', sans-serif;
 	font-weight: 700;
 	margin: 0;
+	word-break: break-all;
 }
 
 .headings{
@@ -30,4 +31,9 @@ h4{
 .editColumn h4:hover{
 	cursor: pointer;
 	background-color: yellow;
+}
+@media only screen and (max-width: 768px) {
+  .editColumn {
+    flex-direction: column;
+  }
 }

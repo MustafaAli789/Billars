@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import AddButton from './AddButton.js';
 import BillModal from './BillModal.js';
 import BillCard from './BillCard.js';
+import TopMessage from './TopMessage.js';
+import ColorBar from './ColorBar.js';
 
 
 class App extends Component{
@@ -15,9 +17,16 @@ class App extends Component{
       bills: [],
       renderModal: false,
       modalData: {},
+      containerWidth: 0,
     }
   }
 
+  componentDidMount() {
+    this.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
+    window.addEventListener("resize", function(){
+      this.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
+    });
+  }
 
   //deleted the bill with the specified id
   deleteBill = (billId)=>{
@@ -68,18 +77,24 @@ class App extends Component{
     this.setState({modalData: data});
   }
 
+  showBillName = (billId)=>{
+    console.log(this.state.bills[billId].paymentName);
+  }
+
   render(){
-    const {bills, renderModal, modalData} = this.state;
+    const {bills, renderModal, modalData, containerWidth} = this.state;
     const billModal = renderModal ? <BillModal show={true} data={modalData} setModalVisible={this.setModalVisible} submit={this.addEditBill}/> : null;
     return (
-      <div className="container">
+      <div id="container" className="container" style={{marginTop: '1rem'}}>
         {billModal}
         <Row noGutters="true">
-          <Col lg="3"><AddButton createNewBill={this.createBillModal}></AddButton></Col>
-          <Col lg="9"><h1></h1></Col>
+          <Col sm="2" style={{marginRight: '1rem', display: 'flex', alignItems: 'center'}}><AddButton createNewBill={this.createBillModal}></AddButton></Col>
+          <Col sm="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={1000}></TopMessage></Col>
         </Row>
-        <Row noGutters="true">
-          Color Bar Here
+        <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
+        <h5 id="editButton">Edit Income</h5>
+        <Row noGutters="true" id="colorBarContainer" style={{marginTop: '1.2rem'}}>
+          <ColorBar bills={bills} containerWidth={containerWidth} showBillName={this.showBillName}></ColorBar>
         </Row>
         <Row noGutters="true">
           <BillCard bills={bills} editBillModal={this.createBillModal} deleteBill={this.deleteBill}></BillCard>

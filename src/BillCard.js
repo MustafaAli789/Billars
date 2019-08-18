@@ -14,7 +14,7 @@ const BillCard=({bills, editBillModal, deleteBill})=>{
 		    		<Col sm="2"><Circle color={bill.color}></Circle></Col>
 		    		<Col sm="10">{bill.paymentName}</Col>
 		    	</Col>
-		    	<Col className="bills d-flex align-items-center justify-content-end" sm="2" style={{borderRight: '0'}}>{bill.cost}</Col>
+		    	<Col className="bills d-flex align-items-center justify-content-end" sm="2" style={{borderRight: '0'}}>${bill.cost}</Col>
 		    	<Col className="bills d-flex align-items-center" sm="5" style={{borderRight: '0'}}>{bill.paymentDesc}</Col>
 		    	<Col className="bills d-flex align-items-center editColumn" sm="2">
 		    		<h4 onClick={()=>editBillModal({title: bill.title, paymentName: bill.paymentName, paymentDesc: bill.paymentDesc, cost:  bill.cost, color: bill.color, id: bill.id})}>Edit</h4>

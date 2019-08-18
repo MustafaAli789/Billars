@@ -1,0 +1,22 @@
+h1{
+	font-family: 'Titillium Web', sans-serif;
+    font-weight: 900;
+}
+
+#safe{
+	background-color: green;
+}
+
+#risk{
+	background-color: orange;
+}
+
+#unsafe{
+	background-color: red;
+}
+
+.messageSpan{
+	border-radius: 7%;
+    padding: 0 10px;
+    color: white;
+}
