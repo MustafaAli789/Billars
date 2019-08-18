@@ -3,18 +3,18 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './BillModal.css';
 import { SliderPicker } from 'react-color';
-import { useState } from 'react';
 
 class BillModal extends React.Component{
 
 	constructor(props){
 		super(props);
 		this.state={
-			title: props.data[0],
-			paymentName: props.data[1],
-			paymentDesc: props.data[2],
-			cost: props.data[3],
-			color: props.data[4],
+			title: props.data.title,
+			paymentName: props.data.paymentName,
+			paymentDesc: props.data.paymentDesc,
+			cost: props.data.cost,
+			color: props.data.color,
+			id: props.data.id,
 		}
 	}
 
@@ -41,6 +41,7 @@ class BillModal extends React.Component{
 		return(
 			<Modal
 		      {...this.props}
+		      onHide={()=>setModalVisible(false)}
 		      size="sm"
 		      aria-labelledby="contained-modal-title-vcenter"
 		      centered
@@ -65,7 +66,20 @@ class BillModal extends React.Component{
 		      </Modal.Body>
 		      <Modal.Footer>
 		      	<Button variant="outline-dark" onClick={()=>setModalVisible(false)}>Close</Button>
-		        <Button variant="outline-dark" onClick={()=>submit(this.state)}>Add</Button>
+		        <Button variant="outline-dark" onClick={()=>
+		        	{
+		        		if(paymentName.length>0 && paymentDesc.length>0 && cost.length>0){
+		        			if(!isNaN(cost)){
+		        				return submit(this.state);
+		        			} else{
+		        				alert("Cost must only be a number");
+		        			}
+		        		} else{
+		        			alert("All fields must be filled.");
+		        		}
+		        	}
+		        }>{title}
+		        </Button>
 		      </Modal.Footer>
 		    </Modal>
 		);

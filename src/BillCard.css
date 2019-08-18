@@ -20,4 +20,14 @@ h4{
 	border-left: 1px solid #c5c5c5;
 	border-right: 1px solid #c5c5c5;
 	word-break: break-all;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 300;
+}
+
+.editColumn h4{
+	font-weight: 300;
+}
+.editColumn h4:hover{
+	cursor: pointer;
+	background-color: yellow;
 }
