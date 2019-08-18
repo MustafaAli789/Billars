@@ -7,7 +7,9 @@ import Circle from './Circle.js';
 
 const BillCard=({bills, editBillModal, deleteBill})=>{
 	const billRows = [];
+	let total = 0;
 	bills.forEach((bill, index)=>{
+		total+=Number(bill.cost);
 		billRows.push(
 			<Row key= {index} style={{marginLeft: '0', marginRight: '0'}}>
 		    	<Col className="bills d-flex align-items-center" xs="3" style={{borderRight: '0'}}>
@@ -34,6 +36,11 @@ const BillCard=({bills, editBillModal, deleteBill})=>{
 	    			<Col className="headings d-flex align-items-center" xs="2"><h4>Edit/Delete</h4></Col>
 	    		</Row>
 	    		{billRows}
+	    		<Row style={{marginLeft: '0', marginRight: '0'}}>
+	    			<Col className="totalRow d-flex align-items-center justify-content-end" xs="3" style={{borderRight: '0'}}><h4>Total</h4></Col>
+	    			<Col className="totalRow d-flex align-items-center justify-content-end" xs="2" style={{borderRight: '0'}}><h4>${total}</h4></Col>
+	    			<Col className="totalRow d-flex align-items-center" xs="7"></Col>
+	    		</Row>
 	    	</Card.Body>
 	  	</Card>
 	);
