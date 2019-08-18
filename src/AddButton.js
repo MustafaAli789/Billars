@@ -8,7 +8,7 @@ const AddButton = ({createNewBill}) =>{
 	const buttonIcon = <FontAwesomeIcon id="plusIcon" icon={faPlus}/>;
 	return(
 		<div>
-			<Button variant="outline-dark" onClick={() => createNewBill({title: "Add", paymentName:"", paymentDesc: "", cost:"", color: "#000", id: null})}>{buttonIcon}</Button>
+			<Button id="button" variant="outline-dark" onClick={() => createNewBill({title: "Add", paymentName:"", paymentDesc: "", cost:"", color: "#000", id: null})}>{buttonIcon}</Button>
 		</div>
 	);
 }

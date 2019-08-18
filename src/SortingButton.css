@@ -1,0 +1,21 @@
+#dropdown-basic-button{
+	background-color: #e2e4e6;
+	border: none;
+    border-bottom: 2px solid #bcbec2;
+	border-radius: 0;
+	font-family: 'Titillium Web', sans-serif;
+	color: black;
+	width: 205px;
+}
+
+.dropdown-menu a{
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.dropdown-menu a:hover{
+	background-color: #d9d9ff;
+}
+
+.dropdown-menu{
+	border-radius: 0;
+}

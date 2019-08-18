@@ -7,6 +7,7 @@ import BillModal from './BillModal.js';
 import BillCard from './BillCard.js';
 import TopMessage from './TopMessage.js';
 import ColorBar from './ColorBar.js';
+import SortingDropdown from './SortingDropdown.js';
 
 
 class App extends Component{
@@ -31,23 +32,47 @@ class App extends Component{
     });
   }
 
+  //a helper method to find a bill by its id
+  findBillIndexById=(billId)=>{
+    let index = null;
+    this.state.bills.forEach((bill, billIndex)=>{
+      if(bill.id===billId){
+        index=billIndex;
+      }
+    });
+    return index;
+  }
+
   //deleted the bill with the specified id
   deleteBill = (billId)=>{
-    var newStateArray = this.state.bills;
-    newStateArray.splice(billId, 1);
-    this.setState({bills: newStateArray});
+    let newStateArray = this.state.bills;
+    let index = this.findBillIndexById(billId);
+    try{
+      newStateArray.splice(index, 1);
+      this.setState({bills: newStateArray});
+    } catch(e){
+      alert("An error occured");
+    }
+    
   }
 
   //upon clicking add or edit in bill modal
   addEditBill=(billInfo)=>{
-    var newStateArray;
+    let newStateArray;
     if(billInfo.title==="Add"){
       billInfo.title="Edit";
       newStateArray = this.state.bills.slice();
       newStateArray.push(billInfo);
     } else{ //bill is being edited
       newStateArray = this.state.bills.slice();
-      newStateArray[Number(billInfo.id)]=billInfo;
+      let index = this.findBillIndexById(billInfo.id);
+      try{
+        newStateArray[index]=billInfo;
+      }catch(e){
+        alert("An error occured editing the bill");
+        this.setModalVisible(false);
+        return;
+      }
     }
 
     this.setState({bills: newStateArray});  
@@ -106,7 +131,10 @@ class App extends Component{
           <Col xs="9" style={{display: 'flex', alignItems: 'center'}}><TopMessage bills={bills} startingMoney={income}></TopMessage></Col>
         </Row>
         <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
-        <h5 id="editButton" onClick={()=>this.changeIncome()}>Edit Income</h5>
+        <Row id="sortingRow" style={{marginTop: '0.5rem'}}>
+          <Col><h5 id="editButton" onClick={()=>this.changeIncome()}>Edit Income</h5></Col>
+          <Col className="d-flex justify-content-end"><SortingDropdown></SortingDropdown></Col>
+        </Row> 
         <Row noGutters="true" id="colorBarContainer">
           <h5 id="colorBarHoverText">{colorBarHoverText}</h5>
           <ColorBar bills={bills} containerWidth={containerWidth} showBillName={this.showBillName}></ColorBar>
