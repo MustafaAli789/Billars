@@ -6,7 +6,7 @@ import './SortingButton.css';
 
 const SortingDropdown = ({bills, sortBills})=>{
 	return(
-		<DropdownButton id="dropdown-basic-button" title="Dropdown button">
+		<DropdownButton id="dropdown-basic-button" title="Sort Bills">
   			<Dropdown.Item onClick={()=>sortBills("HighToLow")}>Highest To Lowest Cost</Dropdown.Item>
   			<Dropdown.Item onClick={()=>sortBills("LowToHigh")}>Lowest To Highest Cost</Dropdown.Item>
   			<Dropdown.Item onClick={()=>sortBills("Alpha")}>Alphabetical</Dropdown.Item>

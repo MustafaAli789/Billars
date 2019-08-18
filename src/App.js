@@ -25,11 +25,18 @@ class App extends Component{
   }
 
   componentDidMount() {
+    this.setState({bills: JSON.parse(localStorage.getItem("bills"))});
+    this.setState({income: Number(localStorage.getItem("monthlyIncome"))});
     var self = this;
     self.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
     window.addEventListener("resize", function(){
       self.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
     });
+  }
+
+  componentDidUpdate(){
+    localStorage.setItem("bills", JSON.stringify(this.state.bills));
+    localStorage.setItem("monthlyIncome", this.state.income);
   }
 
   //a helper method to find a bill by its id
