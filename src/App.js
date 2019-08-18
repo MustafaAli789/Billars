@@ -18,6 +18,7 @@ class App extends Component{
       renderModal: false,
       modalData: {},
       containerWidth: 0,
+      colorBarHoverText: "Placeholder",
     }
   }
 
@@ -77,12 +78,16 @@ class App extends Component{
     this.setState({modalData: data});
   }
 
-  showBillName = (billId)=>{
-    console.log(this.state.bills[billId].paymentName);
+  showBillName = (paymentName, show)=>{
+    this.setState({colorBarHoverText: paymentName});
+    if(show)
+      document.getElementById("colorBarHoverText").style.color="black";
+    else
+      document.getElementById("colorBarHoverText").style.color="white";
   }
 
   render(){
-    const {bills, renderModal, modalData, containerWidth} = this.state;
+    const {bills, renderModal, modalData, containerWidth, colorBarHoverText} = this.state;
     const billModal = renderModal ? <BillModal show={true} data={modalData} setModalVisible={this.setModalVisible} submit={this.addEditBill}/> : null;
     return (
       <div id="container" className="container" style={{marginTop: '1rem'}}>
@@ -93,7 +98,8 @@ class App extends Component{
         </Row>
         <hr style={{borderColor: 'lightGray', marginBottom: '0'}}/>
         <h5 id="editButton">Edit Income</h5>
-        <Row noGutters="true" id="colorBarContainer" style={{marginTop: '1.2rem'}}>
+        <Row noGutters="true" id="colorBarContainer">
+          <h5 id="colorBarHoverText">{colorBarHoverText}</h5>
           <ColorBar bills={bills} containerWidth={containerWidth} showBillName={this.showBillName}></ColorBar>
         </Row>
         <Row noGutters="true">

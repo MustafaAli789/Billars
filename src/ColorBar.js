@@ -10,7 +10,7 @@ const ColorBar = ({bills, containerWidth, showBillName})=>{
 
 	bills.forEach((bill, index)=>{
 		const pixels=(bill.cost/total)*containerWidth-1; //2 is a margin
-		bars.push(<div key ={bill.id} onMouseEnter={()=>showBillName(bill.id)} style={{width: pixels, backgroundColor: bill.color, height: '10px', marginRight: '1px'}}></div>);
+		bars.push(<div key ={bill.id} onMouseEnter={()=>showBillName(bill.paymentName, true)} onMouseLeave={()=>showBillName("Placeholder", false)} style={{width: pixels, backgroundColor: bill.color, height: '10px', marginRight: '1px'}}></div>);
 	});
 	if(bills.length===0){
 		bars.push(<div style={{width: containerWidth, backgroundColor: 'white', height: '10px'}}></div>)
