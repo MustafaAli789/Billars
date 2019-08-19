@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import './App.css';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AddButton from './AddButton.js';
-import BillModal from './BillModal.js';
-import BillCard from './BillCard.js';
-import TopMessage from './TopMessage.js';
-import ColorBar from './ColorBar.js';
-import SortingDropdown from './SortingDropdown.js';
+import AddButton from '../Components/AddButton.js';
+import BillModal from '../Components/BillModal.js';
+import BillCard from '../Components/BillCard.js';
+import TopMessage from '../Components/TopMessage.js';
+import ColorBar from '../Components/ColorBar.js';
+import SortingDropdown from '../Components/SortingDropdown.js';
 
 
 class App extends Component{
