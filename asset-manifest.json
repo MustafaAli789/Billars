@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Billars/static/css/main.61a34b47.chunk.css",
+    "main.js": "/Billars/static/js/main.8be6404e.chunk.js",
+    "main.js.map": "/Billars/static/js/main.8be6404e.chunk.js.map",
+    "runtime~main.js": "/Billars/static/js/runtime~main.a6b65a92.js",
+    "runtime~main.js.map": "/Billars/static/js/runtime~main.a6b65a92.js.map",
+    "static/css/2.266e55a5.chunk.css": "/Billars/static/css/2.266e55a5.chunk.css",
+    "static/js/2.dd8c3b4d.chunk.js": "/Billars/static/js/2.dd8c3b4d.chunk.js",
+    "static/js/2.dd8c3b4d.chunk.js.map": "/Billars/static/js/2.dd8c3b4d.chunk.js.map",
+    "index.html": "/Billars/index.html",
+    "precache-manifest.4b076bfdb43216271501756de5157592.js": "/Billars/precache-manifest.4b076bfdb43216271501756de5157592.js",
+    "service-worker.js": "/Billars/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/Billars/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.61a34b47.chunk.css.map": "/Billars/static/css/main.61a34b47.chunk.css.map"
+  }
+}
