@@ -25,8 +25,16 @@ class App extends Component{
   }
 
   componentDidMount() {
-    this.setState({bills: JSON.parse(localStorage.getItem("bills"))});
-    this.setState({income: Number(localStorage.getItem("monthlyIncome"))});
+    let storedBills = JSON.parse(localStorage.getItem("bills"));
+    if(storedBills===null){
+      storedBills=[];
+    }
+    let storedIncome = Number(localStorage.getItem("monthlyIncome"));
+    if(storedIncome===null){
+      storedIncome=1000;
+    }
+    this.setState({bills: storedBills});
+    this.setState({income: storedIncome});
     var self = this;
     self.setState({containerWidth: document.getElementById("colorBarContainer").offsetWidth});
     window.addEventListener("resize", function(){
